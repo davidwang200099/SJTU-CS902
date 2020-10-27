@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 def mul_matrix(A, B):
     """
     将矩阵A和B相乘,并且返回结果
@@ -6,6 +7,7 @@ def mul_matrix(A, B):
     # 在这里实现你的函数
     C=[]
     m=len(A)
+    n=len(B)
     p=len(B[0])
     for i in range(m):
         C.append([])
@@ -15,16 +17,21 @@ def mul_matrix(A, B):
         for j in range(p):
             for k in range(n):
                 C[i][j]+=A[i][k]*B[k][j]
+    return C
 
 def print_matrix(matrix):
     """
     打印矩阵,每行的相邻元素用一个制表符('\t')隔开
     """
     # 在这里实现你的函数
-    for i in matrix:
-        for j in i:
-            print(i,end='\t')
-        print("\n")
+    m=len(matrix)
+    n=len(matrix[0])
+    for i in range(m):
+        for j in range(n):
+            print(matrix[i][j],end='')
+            if j!=n-1:
+                print('\t',end='')
+        print("")
                 
 def input_matrix(m, n):
     """
@@ -33,8 +40,11 @@ def input_matrix(m, n):
     """
     M=[]
     for i in range(m):
-        line=int(input().split())
-        M.append(line)
+        line=input().split()
+        numline=[]
+        for i in line:
+            numline.append(int(i))
+        M.append(numline)
     return M
 
     
